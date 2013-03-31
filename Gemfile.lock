@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/antulik/story_gem.git
-  revision: 9e246916aece3bffd3f2c8683c40373026347ae8
+  revision: 24ed857373cedfa0bff481c2d9dad0bda40f4933
+  branch: master
   specs:
     story_gem (0.0.3)
       omniauth
@@ -48,6 +49,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
+    dotenv (0.6.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -56,6 +58,9 @@ GEM
       multipart-post (~> 1.1)
     hashie (1.2.0)
     hike (1.2.1)
+    httparty (0.10.0)
+      multi_json (~> 1.0)
+      multi_xml
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
@@ -69,7 +74,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
+    multi_xml (0.5.2)
     multipart-post (1.1.5)
+    nokogiri (1.5.6)
     oauth (0.4.7)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -113,6 +120,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    snoo (0.1.1)
+      httparty
+      nokogiri
     sorcery (0.7.13)
       bcrypt-ruby (~> 3.0.0)
       oauth (~> 0.4.4)
@@ -141,12 +151,14 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  dotenv
   jquery-rails
   omniauth
   omniauth-oauth2
   pg
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
+  snoo
   sorcery (~> 0.7.13)
   story_gem!
   thin

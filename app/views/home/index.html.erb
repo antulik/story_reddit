@@ -1,0 +1,20 @@
+<%= link_to "Addons list", addons_url %>
+
+<% if logged_in? %>
+    <p>
+      Username:<%= current_user.username %>
+    </p>
+
+    <p>Story token: <%= current_user.story_token %></p>
+
+    <p>
+      <%= link_to 'Fetch reddit', '/reddit/fetch', :remote => true %>
+    </p>
+
+    <%= link_to "Logout", logout_path %>
+<% else %>
+    Please login
+<% end %>
+
+<%= link_to "login to story", '/auth/story' %>
+

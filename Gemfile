@@ -11,7 +11,8 @@ gem "sorcery", '~> 0.7.13'
 #gem 'oauth2', '~> 0.6.0'
 gem 'omniauth'
 gem 'omniauth-oauth2'
-
+gem 'snoo'
+gem 'dotenv'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,8 +28,7 @@ end
 
 gem 'jquery-rails'
 
-#gem 'story_gem', :path => "/Users/anton/Dropbox/projects/story_gem"
-gem 'story_gem', :git => 'git://github.com/antulik/story_gem.git'
+gem 'story_gem', :git => 'git://github.com/antulik/story_gem.git', :branch => 'master'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
