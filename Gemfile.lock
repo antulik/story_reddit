@@ -66,6 +66,8 @@ GEM
     coffee-script-source (1.4.0)
     daemons (1.1.9)
     dotenv (0.6.0)
+    dotenv-rails (0.6.0)
+      dotenv (= 0.6.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -181,7 +183,7 @@ PLATFORMS
 DEPENDENCIES
   antulik-recipes!
   coffee-rails (~> 3.2.1)
-  dotenv
+  dotenv-rails
   jquery-rails
   omniauth
   omniauth-oauth2

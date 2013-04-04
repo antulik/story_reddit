@@ -12,7 +12,7 @@ gem "sorcery", '~> 0.7.13'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'snoo'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'whenever', :require => false
 
 # Gems used only for assets and not required
