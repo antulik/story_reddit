@@ -1,9 +1,22 @@
 class RedditSynchronizer
 
+  COOLDOWN_SEC = 2
+
   attr_accessor :user
 
   def initialize user
     self.user = user
+  end
+
+  def cooldown
+    @cooldown     ||= COOLDOWN_SEC.seconds.ago.to_time
+    diff          = Time.now - @cooldown
+    to_sleep_time = COOLDOWN_SEC - diff
+    if to_sleep_time > 0
+      Rails.logger.debug "cooling down for #{to_sleep_time} sec"
+      sleep to_sleep_time
+    end
+    @cooldown = Time.now
   end
 
   def story_client
@@ -19,6 +32,7 @@ class RedditSynchronizer
     calendar = story_calendars.detect { |c| c.external_id == external_id }
 
     if calendar.nil?
+      cooldown
       subreddit = reddit_client.subreddit_info(external_id)
       subreddit = get_object subreddit
 
@@ -38,6 +52,7 @@ class RedditSynchronizer
   end
 
   def sync_popular_subreddits
+    cooldown
     subreddits = reddit_client.get_reddits(:condition => 'popular', :limit => 5)
     subreddits = get_collection subreddits
 
@@ -49,8 +64,8 @@ class RedditSynchronizer
   end
 
   def sync_subreddit subreddit
-
-    listings = reddit_client.get_listing(:subreddit => subreddit, :page => 'top', :limit => 100)
+    cooldown
+    listings = reddit_client.get_listing(:subreddit => subreddit, :page => 'top', :limit => 500)
     listings = get_collection listings
 
     import_data = listings.map do |listing|
@@ -73,7 +88,9 @@ class RedditSynchronizer
   end
 
   def reddit_client
-    @reddit_client ||= Snoo::Client.new
+    @reddit_client ||= Snoo::Client.new(
+        useragent: 'story reddit'
+    )
   end
 
   # SUBREDDIT
