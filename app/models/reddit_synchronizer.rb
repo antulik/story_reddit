@@ -53,7 +53,7 @@ class RedditSynchronizer
 
   def sync_popular_subreddits
     cooldown
-    subreddits = reddit_client.get_reddits(:condition => 'popular', :limit => 5)
+    subreddits = reddit_client.get_reddits(:condition => 'popular', :limit => 10)
     subreddits = get_collection subreddits
 
     subreddits.each do |subreddit|
